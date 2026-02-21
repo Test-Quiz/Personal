@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, jsonify
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    template_folder=r"C:\Users\Gaurav.Gond\Desktop\Gaurav\Mine\templates",
+    static_folder=r"C:\Users\Gaurav.Gond\Desktop\Gaurav\Mine\static"
+)
 
 @app.route("/")
 def home():
@@ -11,8 +15,7 @@ def answer():
     data = request.json
     response = data.get("response")
 
-    # save response in file
-    with open("responses.txt", "a") as f:
+    with open(r"C:\Users\Gaurav.Gond\Desktop\Gaurav\Mine\responses.txt", "a") as f:
         f.write(response + "\n")
 
     return jsonify({"status": "success"})
