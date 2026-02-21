@@ -1,10 +1,32 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify, Response
 
-app = Flask(__name__, template_folder=".", static_folder=".")
+app = Flask(__name__)
+
+def load_full_page():
+    # read html
+    with open("index.html", "r", encoding="utf-8") as f:
+        html = f.read()
+
+    # read css
+    with open("style.css", "r", encoding="utf-8") as f:
+        css = f.read()
+
+    # read js
+    with open("script.js", "r", encoding="utf-8") as f:
+        js = f.read()
+
+    # inject css before </head>
+    html = html.replace("</head>", f"<style>{css}</style></head>")
+
+    # inject js before </body>
+    html = html.replace("</body>", f"<script>{js}</script></body>")
+
+    return html
 
 @app.route("/")
 def home():
-    return render_template("index.html")
+    page = load_full_page()
+    return Response(page, mimetype="text/html")
 
 @app.route("/answer", methods=["POST"])
 def answer():
