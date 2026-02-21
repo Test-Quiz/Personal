@@ -79,7 +79,7 @@ function moveNo() {
 
 @app.route("/")
 def home():
-    return render_template_string(html_page)
+    return render_template("index.html")
 
 @app.route("/answer", methods=["POST"])
 def answer():
@@ -93,3 +93,4 @@ def answer():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
