@@ -1,0 +1,36 @@
+body {
+    background: linear-gradient(to right, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    background: rgba(0,0,0,0.3);
+    padding: 40px;
+    border-radius: 20px;
+}
+
+button {
+    padding: 15px 25px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.yes {
+    background: #00e676;
+    color: white;
+}
+
+.no {
+    background: #ff1744;
+    color: white;
+    position: relative;
+}
